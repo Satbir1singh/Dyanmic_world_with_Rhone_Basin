@@ -1,0 +1,7 @@
+earthengine-api
+geopandas
+shapely
+matplotlib
+folium
+ipyleaflet
+geemap
