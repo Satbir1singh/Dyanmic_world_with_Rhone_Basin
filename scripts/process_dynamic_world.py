@@ -90,15 +90,15 @@ geometry = gdf.geometry.unary_union.__geo_interface__
 roi = ee.Geometry(geometry)
 
 # Define time range
-start_date = '2015-01-01'
-end_date = '2021-12-30'
+start_date = '2020-01-01'
+end_date = '2021-01-01'
 
 # Sentinel-2 Image Collection: Filter and clip to region
 s2 = (
     ee.ImageCollection("COPERNICUS/S2_HARMONIZED")
     .filterDate(start_date, end_date)
     .filterBounds(roi)
-    .filter(ee.Filter.lt("CLOUDY_PIXEL_PERCENTAGE", 20))
+    .filter(ee.Filter.lt("CLOUDY_PIXEL_PERCENTAGE", 35))
     .map(lambda img: img.clip(roi))
 )
 
