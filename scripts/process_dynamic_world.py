@@ -85,7 +85,7 @@ from shapely.geometry import mapping
 ee.Initialize(project="ee-officialsatbir23")
 
 # Load your AOI shapefile
-gdf = gpd.read_file("D:\GEE-project\data\BV_Rhone.shp")
+gdf = gpd.read_file("E:\D-Drive\GEE-project\data\BV_Rhone.shp")
 geometry = gdf.geometry.unary_union.__geo_interface__
 roi = ee.Geometry(geometry)
 
@@ -103,7 +103,7 @@ s2 = (
 )
 
 # Create median composite
-s2_image = s2.median()
+s2_image = s2.mode()
 s2_vis_params = {"bands": ["B4", "B3", "B2"], "min": 0, "max": 5000}
 
 # Load Dynamic World Image Collection: Filter and clip
